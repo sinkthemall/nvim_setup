@@ -1,0 +1,35 @@
+return { --- the image nvim plugin have to many buggy so temporary disable
+    -- "3rd/image.nvim",
+    -- build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+    -- opts = {
+    --     processor = "magick_cli",
+    -- },
+    -- config = function() 
+    --     require("image").setup({
+    --         backend = "sixel",
+    --         processor = "magick_cli",
+    --         intergrations = {
+    --             markdown = {
+    --                 enabled =true ,
+    --                 -- clear_in_insert_mode = true,
+    --                 download_remote_images = false,
+    --                 only_render_image_at_cursor = true,
+    --                 only_render_image_at_cursor_mode = "popup",
+    --                 floating_windows = true,
+    --                 filetypes = {"markdown", "vimwiki"},
+    --             },
+    --             neorg = {
+    --                 enabled = false,
+    --             },
+    --             typst = { 
+    --                 enabled = false,
+    --             }
+    --         },
+    --         max_witdh = 10,
+    --         max_height = 10,
+    --         scale_factor = 0.5,
+    --         window_overlap_clear_enabled = true,
+    --         -- editor_only_render_when_focused = true,
+    --     })
+    -- end
+}

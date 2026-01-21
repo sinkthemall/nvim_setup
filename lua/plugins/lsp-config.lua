@@ -12,17 +12,18 @@ return {
                     "bashls",
                     "tombi",
                     "asm_lsp",
-                    "docker-language-server"
+                    "docker_language_server",
+                    "marksman"
             },
             automatic_enable = {
-
+                    "marksman",
                     "clangd",
                     "lua_ls",
                     "pylsp",
                     "bashls",
                     "tombi",
                     "asm_lsp",
-                    "docker-language-server"
+                    "docker_language_server"
             }
         },
         dependencies = {

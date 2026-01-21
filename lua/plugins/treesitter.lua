@@ -7,7 +7,7 @@ return {
 	build = ":TSUpdate",
 	cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 	opts = {
-		ensure_installed = {"c" , "lua", "python", "vim", "html", "asm", "bash", "cpp", "dockerfile", "vimdoc", "luadoc"},
+		ensure_installed = {"c" , "lua", "python", "vim", "html", "asm", "bash", "cpp", "dockerfile", "vimdoc", "luadoc", "markdown"},
         highlight = {
 				enable = true,
 				use_languagetree = true,
