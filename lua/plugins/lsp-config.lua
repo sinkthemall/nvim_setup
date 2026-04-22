@@ -8,7 +8,7 @@ return {
             ensure_installed = {
                     "clangd",
                     "lua_ls",
-                    "pylsp",
+                    "python_lsp_server",
                     "bashls",
                     "tombi",
                     "asm_lsp",
@@ -19,7 +19,7 @@ return {
                     "marksman",
                     "clangd",
                     "lua_ls",
-                    "pylsp",
+                    "python_lsp_server",
                     "bashls",
                     "tombi",
                     "asm_lsp",

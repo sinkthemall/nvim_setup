@@ -10,11 +10,11 @@ return { --- the image nvim plugin have to many buggy so temporary disable
     --         processor = "magick_cli",
     --         intergrations = {
     --             markdown = {
-    --                 enabled =true ,
-    --                 -- clear_in_insert_mode = true,
+    --                 enabled = true,
+    --                 lear_in_insert_mode = true,
     --                 download_remote_images = false,
     --                 only_render_image_at_cursor = true,
-    --                 only_render_image_at_cursor_mode = "popup",
+    --                 only_render_image_at_cursor_mode = "inline",
     --                 floating_windows = true,
     --                 filetypes = {"markdown", "vimwiki"},
     --             },
@@ -28,8 +28,12 @@ return { --- the image nvim plugin have to many buggy so temporary disable
     --         max_witdh = 10,
     --         max_height = 10,
     --         scale_factor = 0.5,
+    --         -- window_overlap_clear_enabled = true,
+    --         editor_only_render_when_focused = true,
+    --         tmux_show_only_in_active_window = true,
     --         window_overlap_clear_enabled = true,
-    --         -- editor_only_render_when_focused = true,
+    --         window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
+    --         hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
     --     })
     -- end
 }
