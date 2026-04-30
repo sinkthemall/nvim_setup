@@ -57,5 +57,11 @@ g.loaded_python3_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 
+--- I am not sure, but this is for short message display like yank message
+-- vim.opt.shortmess:remove("s")
 
 
+-- Disable native wildmenu, so noice popup menu does no flickering (suggested by chatGPT)
+-- vim.opt.cmdheight = 1
+-- vim.opt.wildmenu = false
+-- vim.opt.wildmode = "full"

@@ -29,3 +29,10 @@ map('n', 'zM', require('ufo').closeAllFolds, {noremap = true, silent = true, des
 -- map('n', 'za', require('ufo').toggleFold, {noremap = true, silent =true , desc = "Ultra Fold toggle fold"})
 --map('n', 'zr', require('ufo').openFoldsExceptKinds, {desc = "Ultra unFold fold"})
 --map('n', 'zm', require('ufo').closeFoldsWith, {desc = "Ultra Fold fold"})
+
+-- Telescope mapping 
+local telescope_builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, { noremap = true, silent = true, desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, { noremap = true, silent = true, desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, { noremap = true, silent = true, desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, { noremap = true, silent = true, desc = 'Telescope help tags' })

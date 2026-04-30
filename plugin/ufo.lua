@@ -1,0 +1,15 @@
+-- Plugin's local config table 
+local conf = {
+    provider_selector = function(bufnr, filetype, buftype)
+        return {'treesitter', 'indent'}
+    end
+}
+
+-- Plugin's resolve deps (with plugin load itself)
+vim.pack.add({
+    { src = gh('kevinhwang91/promise-async') },
+    { src = gh('kevinhwang91/nvim-ufo') }
+})
+
+
+require("ufo").setup(conf)
