@@ -23,6 +23,7 @@ local masonlsp_conf = {
 
 }
 
+
 vim.pack.add({
     { src = gh("mason-org/mason.nvim") },
     { src = gh("neovim/nvim-lspconfig") },
@@ -32,5 +33,7 @@ vim.pack.add({
 
 require("mason").setup({})
 require("mason-lspconfig").setup(masonlsp_conf)
+
+
 -- require("config.lspconfig").defaults()
 
