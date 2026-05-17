@@ -10,7 +10,7 @@ map('n', '<C-Up>', '<C-w><Up>', {noremap = true, silent = true, desc = "switch w
 map('n', '<C-Down>', '<C-w><Down>', {noremap = true, silent = true, desc = "switch window down"})
 
 -- neotree toggle
-map('n', '<leader>e', '<cmd>Neotree filesystem toggle right<CR><C-w>w', {noremap = true, silent = true, desc = "Neotree toggle right"})
+map('n', '<leader>ne', '<cmd>Neotree filesystem toggle right<CR><C-w>w', {noremap = true, silent = true, desc = "Neotree toggle right"})
 
 -- Terminal toggle
 -- local term = require("nvchad.term")
@@ -40,7 +40,8 @@ vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, { noremap = true,
 
 -- LSP mapping config 
 local function LSP_opts(desc)
-    return { buffer = bufnr, desc = "LSP " .. desc }
+    -- return { buffer = bufnr, desc = "LSP " .. desc }
+    return { desc = "LSP" .. desc}
 end
 
 map("n", "gD", vim.lsp.buf.declaration, LSP_opts "Go to declaration")
@@ -48,6 +49,8 @@ map("n", "gd", vim.lsp.buf.definition, LSP_opts "Go to definition")
 map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, LSP_opts "Add workspace folder")
 map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, LSP_opts "Remove workspace folder")
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, LSP_opts "Code action")
+map("n", "<leader>de", vim.diagnostic.open_float, LSP_opts "Dianostic open float")
+map("n", "<leader>da", vim.diagnostic.setloclist, LSP_opts "Dianostic all error")
 -- map("n", "<leader>wl", function()
 --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 -- end, LSP_opts "List workspace folders")
