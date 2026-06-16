@@ -75,9 +75,9 @@
       "rev": "6419b36f50c42420cbbf1d3ffba573094cf414c8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
-    "nvim-ufo": {
-      "rev": "ab3eb124062422d276fae49e0dd63b3ad1062cfc",
-      "src": "https://github.com/kevinhwang91/nvim-ufo"
+    "nvim-origami": {
+      "rev": "47be2209d09755c0202da1e22a8d67af8f5ae178",
+      "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-web-devicons": {
       "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",

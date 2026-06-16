@@ -4,7 +4,7 @@ local function apply_markview_highlights()
         { group = "MarkviewHeading2", fg = "#f7e702", bg = "#454324" },
         { group = "MarkviewHeading3", fg = "#33f702", bg = "#274524" },
         { group = "MarkviewHeading4", fg = "#02f7f3", bg = "#244543" },
-        { group = "MarkviewHeading5", fg = "#0a02f7", bg = "#242445" },
+        { group = "MarkviewHeading5", fg = "#3477eb", bg = "#242445" },
         { group = "MarkviewHeading6", fg = "#f702f7", bg = "#452444" },
     }
 

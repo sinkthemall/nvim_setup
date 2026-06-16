@@ -24,8 +24,8 @@ map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- UFO
-map('n', 'zR', require('ufo').openAllFolds, {noremap = true, silent =true , desc = "Ultra Fold unfold all"})
-map('n', 'zM', require('ufo').closeAllFolds, {noremap = true, silent = true, desc = "Ultra Fold fold all"})
+-- map('n', 'zR', require('ufo').openAllFolds, {noremap = true, silent =true , desc = "Ultra Fold unfold all"})
+-- map('n', 'zM', require('ufo').closeAllFolds, {noremap = true, silent = true, desc = "Ultra Fold fold all"})
 -- map('n', 'za', require('ufo').toggleFold, {noremap = true, silent =true , desc = "Ultra Fold toggle fold"})
 --map('n', 'zr', require('ufo').openFoldsExceptKinds, {desc = "Ultra unFold fold"})
 --map('n', 'zm', require('ufo').closeFoldsWith, {desc = "Ultra Fold fold"})
