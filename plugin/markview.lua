@@ -111,8 +111,16 @@ local conf = {
             org_shift_char = " ",
             org_shift_width = 1,
         },
+        block_quotes = {
+            wrap = true,
+        },
     }
 }
+
+
+vim.opt.linebreak = true
+vim.opt.list = false
+
 
 vim.pack.add({
     { src = gh("nvim-tree/nvim-web-devicons") },

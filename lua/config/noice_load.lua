@@ -1,3 +1,5 @@
+-- moving the noice into config, so I can load it from init.lua, doing this so the vim.pack UI use the noice UI instead
+--
 -- PLugin's local config table
 local conf = {
     messages = {
@@ -54,16 +56,3 @@ vim.pack.add({
     { src = gh("folke/noice.nvim")}
 })
 require("noice").setup(conf)
-
--- Lazy load plugin
-vim.api.nvim_create_autocmd("VimEnter", {
-        once  = true,
-        callback = function()
-            vim.pack.add({
-                { src = gh("MunifTanjim/nui.nvim")},
-                { src = gh("folke/noice.nvim")}
-            })
-            require("noice").setup(conf)
-        end
-    }
-)

@@ -46,6 +46,10 @@
       "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "mdpv.nvim": {
+      "rev": "b76e2cf15480beccd95df741a75a55dd2aafb3f2",
+      "src": "https://github.com/hitori-chan/mdpv.nvim"
+    },
     "mini.icons": {
       "rev": "bac6317300e205335df425296570d84322730067",
       "src": "https://github.com/echasnovski/mini.icons"

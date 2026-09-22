@@ -21,5 +21,6 @@ vim.cmd("set linebreak")
 
 --
 require("config.options")
+require("config.noice_load")
 -- require("mapping")
 
