@@ -1,0 +1,88 @@
+local function apply_heading_highlights()
+    local heading_hls = {
+        { group = "MarkdownH1", fg = "#f70202", bg = "#452424" },
+        { group = "MarkdownH2", fg = "#f7e702", bg = "#454324" },
+        { group = "MarkdownH3", fg = "#33f702", bg = "#274524" },
+        { group = "MarkdownH4", fg = "#02f7f3", bg = "#244543" },
+        { group = "MarkdownH5", fg = "#0a02f7", bg = "#242445" },
+        { group = "MarkdownH6", fg = "#f702f7", bg = "#452444" },
+    }
+
+    for _, hl in ipairs(heading_hls) do
+        vim.api.nvim_set_hl(0, hl.group, { fg = hl.fg, bg = hl.bg })
+    end
+end
+
+apply_heading_highlights()
+
+vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
+    callback = apply_heading_highlights,
+})
+
+
+local conf = {
+    -- set to false to stop render-markdown from turning itself on
+    -- when a markdown buffer is opened (toggle it with <leader>m)
+    enabled = false,
+    -- no delay between a buffer change and the re-render
+    debounce = 10,
+    heading = {
+        enabled = true,
+        position = "inline",
+        backgrounds = {
+            "MarkdownH1",
+            "MarkdownH2",
+            "MarkdownH3",
+            "MarkdownH4",
+            "MarkdownH5",
+            "MarkdownH6",
+        },
+        foregrounds = {
+            "RenderMarkdownH1",
+            "RenderMarkdownH2",
+            "RenderMarkdownH3",
+            "RenderMarkdownH4",
+            "RenderMarkdownH5",
+            "RenderMarkdownH6",
+        },
+    },
+    code = {
+        position = "right",
+        width = "block",
+        right_pad = 10,
+    },
+    checkbox = {
+        checked = { scope_highlight = "@markup.strikethrough" },
+        custom = {
+            important = {
+                raw = "[~]",
+                rendered = "󰓎 ",
+                highlight = "DiagnosticWarn",
+            },
+        },
+    },
+    quote = {
+        repeat_linebreak = true,
+    },
+    win_options = {
+        showbreak = {
+            default = "",
+            rendered = "  ",
+        },
+        breakindent = {
+            default = false,
+            rendered = true,
+        },
+        breakindentopt = {
+            default = "",
+            rendered = "",
+        },
+    },
+}
+
+vim.pack.add({
+    { src = gh("nvim-tree/nvim-web-devicons") },
+    { src = gh("MeanderingProgrammer/render-markdown.nvim") },
+})
+
+require("render-markdown").setup(conf)

@@ -57,3 +57,6 @@ map("n", "<leader>da", vim.diagnostic.setloclist, LSP_opts "Dianostic all error"
 map("n", "<leader>D", vim.lsp.buf.type_definition, LSP_opts "Go to type definition")
 -- map("n", "<leader>ra", require "nvchad.lsp.renamer", LSP_opts "NvRenamer")
 
+
+-- Markview toggle
+map("n", "<leader>m", "<cmd>Markview<CR>", { noremap = true, silent = true, desc = "Markview toggle" })

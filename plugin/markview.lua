@@ -112,7 +112,8 @@ local conf = {
             org_shift_width = 1,
         },
         block_quotes = {
-            wrap = true,
+            -- nvim repeats the border itself, see the patch at the bottom
+            wrap = false,
         },
     }
 }
@@ -120,6 +121,8 @@ local conf = {
 
 vim.opt.linebreak = true
 vim.opt.list = false
+-- room for the repeated block quote border on wrapped lines
+vim.opt.showbreak = "  "
 
 
 vim.pack.add({
@@ -128,3 +131,26 @@ vim.pack.add({
 })
 
 require("markview").setup(conf)
+
+
+-- markview places the borders of a wrapped block quote by guessing where the
+-- line breaks, which is off by one border when 'linebreak' is set. Let nvim
+-- repeat them instead, which it gets right at any width.
+local markdown = require("markview.renderers.markdown")
+local block_quote = markdown.block_quote
+
+markdown.block_quote = function (buffer, item)
+    local set_extmark = vim.api.nvim_buf_set_extmark
+
+    vim.api.nvim_buf_set_extmark = function (buf, ns, row, col, opts)
+        opts.virt_text_repeat_linebreak = true
+        return set_extmark(buf, ns, row, col, opts)
+    end
+
+    local ok, err = pcall(block_quote, buffer, item)
+    vim.api.nvim_buf_set_extmark = set_extmark
+
+    if not ok then
+        error(err)
+    end
+end
