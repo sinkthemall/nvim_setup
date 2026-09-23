@@ -112,17 +112,14 @@ local conf = {
             org_shift_width = 1,
         },
         block_quotes = {
-            -- nvim repeats the border itself, see the patch at the bottom
-            wrap = false,
+            wrap = true,
         },
     }
 }
 
 
-vim.opt.linebreak = true
-vim.opt.list = false
--- room for the repeated block quote border on wrapped lines
-vim.opt.showbreak = "  "
+-- vim.opt.linebreak = true
+-- vim.opt.list = false
 
 
 vim.pack.add({
@@ -133,24 +130,53 @@ vim.pack.add({
 require("markview").setup(conf)
 
 
--- markview places the borders of a wrapped block quote by guessing where the
--- line breaks, which is off by one border when 'linebreak' is set. Let nvim
--- repeat them instead, which it gets right at any width.
-local markdown = require("markview.renderers.markdown")
-local block_quote = markdown.block_quote
-
-markdown.block_quote = function (buffer, item)
-    local set_extmark = vim.api.nvim_buf_set_extmark
-
-    vim.api.nvim_buf_set_extmark = function (buf, ns, row, col, opts)
-        opts.virt_text_repeat_linebreak = true
-        return set_extmark(buf, ns, row, col, opts)
-    end
-
-    local ok, err = pcall(block_quote, buffer, item)
-    vim.api.nvim_buf_set_extmark = set_extmark
-
-    if not ok then
-        error(err)
-    end
-end
+-- -- markview only draws the border of a wrapped block quote when foldlevel() is
+-- -- 0, which never holds with treesitter folds. Report 0 for lines that are not
+-- -- actually closed.
+-- local markdown = require("markview.renderers.markdown")
+-- local block_quote = markdown.block_quote
+--
+-- markdown.block_quote = function (buffer, item)
+--     local foldlevel = vim.fn.foldlevel
+--
+--     vim.fn.foldlevel = function (lnum)
+--         return vim.fn.foldclosed(lnum) == -1 and 0 or foldlevel(lnum)
+--     end
+--
+--     pcall(block_quote, buffer, item)
+--     vim.fn.foldlevel = foldlevel
+-- end
+--
+--
+-- -- markview guesses how many borders a wrapped line needs, and guesses one too
+-- -- many when 'linebreak' is set, leaving a stray border near the end of the
+-- -- line. Add them one at a time instead, re-reading the height of the line after
+-- -- each one, since a border is itself wide enough to push text onto a new row.
+-- local wrap = require("markview.wrap")
+--
+-- wrap.fine_wrap = function (buffer, win, row, ns, indent)
+--     local wininfo = vim.fn.getwininfo(win)[1]
+--     local width = wininfo.width - (vim.g.markview_textoff or wininfo.textoff)
+--
+--     for w = 1, 64, 1 do
+--         local rows = vim.api.nvim_win_text_height(win, { start_row = row, end_row = row }).all
+--
+--         if w > rows - 1 then
+--             break
+--         end
+--
+--         local wrapcol = vim.fn.virtcol2col(win, row + 1, (width * w) + 1)
+--
+--         if wrapcol >= vim.fn.virtcol({ row + 1, "$" }) - 1 then
+--             break
+--         end
+--
+--         vim.api.nvim_buf_set_extmark(buffer, ns, row, wrapcol - 1, {
+--             undo_restore = false, invalidate = true,
+--             right_gravity = false,
+--
+--             virt_text_pos = "inline",
+--             virt_text = indent,
+--         })
+--     end
+-- end
